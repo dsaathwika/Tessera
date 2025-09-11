@@ -20,8 +20,9 @@ export default function UserDashboard() {
 
     if (error) {
       console.error('Error fetching events:', error);
+      setEvents([]);
     } else {
-      setEvents(data);
+      setEvents(Array.isArray(data) ? data : []);
     }
     setLoading(false);
   }, []);
@@ -60,8 +61,10 @@ export default function UserDashboard() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {events.length > 0 ? (
-              events.map((event) => (
-                <EventCard key={event.id} event={event} onBook={handleBookEvent} />
+              events.map((event, idx) => (
+                event && event.id !== undefined ? (
+                  <EventCard key={event.id} event={event} />
+                ) : null
               ))
             ) : (
               <p>No upcoming events found.</p>

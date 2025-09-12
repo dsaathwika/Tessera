@@ -1,20 +1,37 @@
 // src/components/UserDashboard.tsx
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import './Dashboard.css';
 
 export function UserDashboard() {
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-  };
+  const [events, setEvents] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      setLoading(true);
+      const { data } = await supabase.from('events').select('*').order('date', { ascending: true });
+      setEvents(data || []);
+      setLoading(false);
+    };
+    fetchEvents();
+  }, []);
+
+  if (loading) return <p>Loading events...</p>;
 
   return (
-    <div className="dashboard-container">
-      <div className="dashboard-card">
-        <h1>Welcome, User! 👋</h1>
-        <p>This is your personal dashboard.</p>
-        <button className="logout-button" onClick={handleLogout}>
-          Logout
-        </button>
+    <div className="admin-dashboard">
+      <h1 className="section-title">Upcoming Events</h1>
+      <div className="event-list">
+        {events.map(event => (
+          <Link to={`/event/${event.id}`} key={event.id} className="event-item-link">
+            <div className="event-item">
+              <h3>{event.name}</h3>
+              <p>Date: {new Date(event.date).toLocaleString()}</p>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );

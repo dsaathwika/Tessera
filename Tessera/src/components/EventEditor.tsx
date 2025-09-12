@@ -1,10 +1,11 @@
 // src/components/EventEditor.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, type ReactNode } from 'react';
 import { supabase } from '../supabaseClient';
 import './EventEditor.css'; // We'll create this file next
 
 // Define the type for an Event object
 export type Event = {
+  booked_count: ReactNode;
   id?: string;
   name: string;
   description: string;
@@ -19,7 +20,7 @@ interface EventEditorProps {
 }
 
 export function EventEditor({ eventToEdit, onClose, onSave }: EventEditorProps) {
-  const [event, setEvent] = useState<Event>({ name: '', description: '', date: '', capacity: 0 });
+  const [event, setEvent] = useState<Event>({ name: '', description: '', date: '', capacity: 0, booked_count: 0 });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -32,7 +33,7 @@ export function EventEditor({ eventToEdit, onClose, onSave }: EventEditorProps) 
       });
     } else {
       // Reset form if creating a new event
-      setEvent({ name: '', description: '', date: '', capacity: 0 });
+      setEvent({ name: '', description: '', date: '', capacity: 0, booked_count: 0 });
     }
   }, [eventToEdit]);
 

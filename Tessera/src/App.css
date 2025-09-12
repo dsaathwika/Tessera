@@ -30,3 +30,25 @@ h1 {
 .start-button:hover {
   border-color: #ffffff;
 }
+/* Add to src/App.css */
+.main-nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #2a2a2a;
+}
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.main-nav button {
+  margin-left: auto; /* Pushes button to the right */
+  background: none;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}

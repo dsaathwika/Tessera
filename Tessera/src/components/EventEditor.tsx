@@ -1,9 +1,13 @@
-// src/components/EventEditor.tsx
+/**
+ * EventEditor.tsx
+ *
+ * Provides a form for creating or editing events, including validation and submission to Supabase.
+ * Exports the Event type and EventEditor component.
+ */
 import React, { useState, useEffect, type ReactNode } from 'react';
 import { supabase } from '../supabaseClient';
-import './EventEditor.css'; // We'll create this file next
+import './EventEditor.css';
 
-// Define the type for an Event object
 export type Event = {
   booked_count: ReactNode;
   id?: string;
@@ -25,14 +29,12 @@ export function EventEditor({ eventToEdit, onClose, onSave }: EventEditorProps) 
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // If we are editing, populate the form with existing event data
     if (eventToEdit) {
       setEvent({
         ...eventToEdit,
-        date: new Date(eventToEdit.date).toISOString().substring(0, 16), // Format for datetime-local input
+        date: new Date(eventToEdit.date).toISOString().substring(0, 16),
       });
     } else {
-      // Reset form if creating a new event
       setEvent({ name: '', description: '', date: '', capacity: 0, booked_count: 0 });
     }
   }, [eventToEdit]);
@@ -54,7 +56,6 @@ export function EventEditor({ eventToEdit, onClose, onSave }: EventEditorProps) 
 
     let response;
     if (eventToEdit?.id) {
-      // Update existing event
       response = await supabase.from('events').update(eventData).eq('id', eventToEdit.id);
     } else {
       // Create new event

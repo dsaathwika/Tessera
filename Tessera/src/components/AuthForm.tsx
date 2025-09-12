@@ -1,6 +1,12 @@
-// src/components/AuthForm.tsx
+
+/**
+ * AuthForm.tsx
+ *
+ * Handles user authentication (login, signup, and password reset) using Supabase.
+ * Provides a form for user input and displays messages/errors.
+ */
 import React, { useState } from 'react';
-import { supabase } from '../supabaseClient'; // Import the client
+import { supabase } from '../supabaseClient';
 import './AuthForm.css';
 
 export function AuthForm() {
@@ -22,16 +28,13 @@ export function AuthForm() {
     setLoading(true);
 
     if (isLogin) {
-      // Handle Login
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
       if (error) setError(error.message);
       else setMessage('Logged in successfully!');
-      // Later, you'll redirect the user here
     } else {
-      // Handle Sign Up
       const { error } = await supabase.auth.signUp({
         email,
         password,
@@ -50,7 +53,7 @@ export function AuthForm() {
     clearMessages();
     setLoading(true);
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin, // Link to redirect to after password reset
+      redirectTo: window.location.origin,
     });
 
     if (error) setError(error.message);

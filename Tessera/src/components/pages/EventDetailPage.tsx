@@ -1,8 +1,12 @@
-// src/pages/EventDetailPage.tsx
+/**
+ * EventDetailPage.tsx
+ *
+ * Shows details for a single event, allows booking via Supabase, and displays seat availability.
+ */
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
-import './PageStyles.css'; // We'll create this file
+import './PageStyles.css';
 
 export function EventDetailPage() {
   const { id } = useParams();
@@ -32,8 +36,6 @@ export function EventDetailPage() {
         setMessage('Error: You must be logged in.');
         return;
     }
-    
-    // Call the PostgreSQL function
     const { data, error } = await supabase.rpc('handle_booking', {
       event_id_to_book: event.id,
       user_id_to_book: session.user.id
@@ -42,8 +44,7 @@ export function EventDetailPage() {
     if (error) {
       setMessage(`Error: ${error.message}`);
     } else {
-      setMessage(data); // Will be 'SUCCESS: ...' or 'ERROR: ...'
-      // Optionally refresh event data
+      setMessage(data);
     }
   };
 

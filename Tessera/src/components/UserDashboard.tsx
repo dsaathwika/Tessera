@@ -1,4 +1,9 @@
-// src/components/UserDashboard.tsx
+/**
+ * UserDashboard.tsx
+ *
+ * Displays a list of upcoming events for users, fetched from Supabase.
+ * Allows navigation to event detail pages.
+ */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../supabaseClient';

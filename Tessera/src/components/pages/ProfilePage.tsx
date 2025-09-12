@@ -1,5 +1,8 @@
-
-// src/pages/ProfilePage.tsx
+/**
+ * ProfilePage.tsx
+ *
+ * Displays the user's booking history and allows cancellation of bookings using Supabase.
+ */
 import { useState, useEffect } from 'react';
 import { supabase } from '../../supabaseClient';
 import './PageStyles.css';
@@ -27,7 +30,6 @@ export function ProfilePage() {
   const handleCancel = async (bookingId: string) => {
     if (!window.confirm('Are you sure you want to cancel this booking?')) return;
 
-    // Call the PostgreSQL function
     const { data, error } = await supabase.rpc('handle_cancellation', {
       booking_id_to_cancel: bookingId
     });
@@ -35,8 +37,8 @@ export function ProfilePage() {
     if (error) {
       setMessage(`Error: ${error.message}`);
     } else {
-      setMessage(data); // Will be 'SUCCESS: ...'
-      fetchBookings(); // Refresh the list
+      setMessage(data);
+      fetchBookings();
     }
   };
 

@@ -1,0 +1,28 @@
+.auth-card {
+  background: rgba(51, 65, 85, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(96, 165, 250, 0.1);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.2),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(96, 165, 250, 0.05);
+  transition: all var(--transition-base);
+}
+
+.auth-card:hover {
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.3),
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(96, 165, 250, 0.08);
+}
+
+.auth-card__content {
+  padding: var(--spacing-8);
+}
+
+@media (max-width: 480px) {
+  .auth-card__content {
+    padding: var(--spacing-6);
+  }
+}

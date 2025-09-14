@@ -1,0 +1,210 @@
+.auth-page {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--color-bg-primary);
+  position: relative;
+}
+
+.auth-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle 600px at 50% 200px,
+    rgba(96, 165, 250, 0.12),
+    transparent
+  );
+  z-index: 0;
+}
+
+.auth-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-6);
+  z-index: 1;
+}
+
+.auth-content {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.auth-header {
+  text-align: center;
+}
+
+.auth-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-3) 0;
+  color: var(--color-text-primary);
+}
+
+.auth-title-accent {
+  color: var(--color-primary);
+}
+
+.auth-subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  margin: 0;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.auth-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.auth-submit-btn {
+  margin-top: var(--spacing-2);
+}
+
+.auth-message {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-4);
+  border: 1px solid transparent;
+}
+
+.auth-message-icon {
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+}
+
+.auth-message--success {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.3);
+  color: var(--color-success);
+}
+
+.auth-message--error {
+  background: rgba(251, 113, 133, 0.1);
+  border-color: rgba(251, 113, 133, 0.3);
+  color: var(--color-error);
+}
+
+.auth-message--info {
+  background: rgba(96, 165, 250, 0.1);
+  border-color: rgba(96, 165, 250, 0.3);
+  color: var(--color-primary);
+}
+
+.auth-forgot {
+  margin-top: var(--spacing-4);
+  text-align: center;
+}
+
+.auth-toggle {
+  margin-top: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.auth-divider {
+  position: relative;
+  text-align: center;
+  margin: var(--spacing-2) 0;
+}
+
+.auth-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.auth-divider-text {
+  display: inline-block;
+  padding: 0 var(--spacing-4);
+  background: var(--color-surface);
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: var(--spacing-8);
+}
+
+.auth-admin-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background: rgba(96, 165, 250, 0.05);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-radius: var(--border-radius-lg);
+  border-left: 3px solid var(--color-primary);
+}
+
+.auth-admin-hint-icon {
+  font-size: var(--font-size-lg);
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+.auth-admin-hint p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  line-height: 1.5;
+}
+
+.auth-admin-hint strong {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.auth-admin-email {
+  display: inline-block;
+  padding: var(--spacing-1) var(--spacing-3);
+  background: rgba(96, 165, 250, 0.1);
+  color: var(--color-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  margin-left: var(--spacing-1);
+}
+
+@media (max-width: 640px) {
+  .auth-container {
+    padding: var(--spacing-4);
+  }
+  
+  .auth-content {
+    max-width: 100%;
+  }
+  
+  .auth-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .auth-admin-hint {
+    flex-direction: column;
+    gap: var(--spacing-2);
+    text-align: center;
+  }
+}

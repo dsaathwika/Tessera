@@ -1,0 +1,123 @@
+.auth-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-md);
+  transition: all var(--transition-base);
+  cursor: pointer;
+  outline: none;
+}
+
+.auth-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.auth-btn--sm {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-sm);
+  min-height: 36px;
+}
+
+.auth-btn--md {
+  padding: var(--spacing-3) var(--spacing-6);
+  font-size: var(--font-size-base);
+  min-height: 44px;
+}
+
+.auth-btn--lg {
+  padding: var(--spacing-4) var(--spacing-8);
+  font-size: var(--font-size-base);
+  min-height: 48px;
+}
+
+.auth-btn--full-width {
+  width: 100%;
+}
+
+.auth-btn--primary {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+}
+
+.auth-btn--primary:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.auth-btn--primary:active:not(:disabled) {
+  background: var(--color-primary-dark);
+  transform: translateY(1px);
+}
+
+.auth-btn--secondary {
+  background: var(--color-surface-light);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.auth-btn--secondary:hover:not(:disabled) {
+  background: var(--color-surface-elevated);
+  border-color: var(--color-border-light);
+}
+
+.auth-btn--ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+}
+
+.auth-btn--ghost:hover:not(:disabled) {
+  background: var(--color-surface-light);
+  color: var(--color-text-primary);
+}
+
+.auth-btn--soft {
+  background: rgba(96, 165, 250, 0.1);
+  color: var(--color-primary);
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+.auth-btn--soft:hover:not(:disabled) {
+  background: rgba(96, 165, 250, 0.15);
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+.auth-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.auth-btn--loading {
+  cursor: not-allowed;
+}
+
+.auth-btn__content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.auth-btn__spinner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: var(--border-radius-full);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
